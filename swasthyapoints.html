@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swasthya - Points</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: #f4f4f4;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo img {
+            width: 180px;
+            height: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+
+        .nav-menu a:hover {
+            color: #005f56;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #00796B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Points Banner */
+        .points-banner {
+            background: linear-gradient(135deg, #00796B, #004d40);
+            color: white;
+            padding: 80px 50px;
+            text-align: center;
+        }
+
+        .points-banner h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .points-banner p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .points-display {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .points-count {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .points-label {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Points Content */
+        .points-content {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 50px;
+        }
+
+        .section-title {
+            color: #00796B;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* How to Earn Section */
+        .earn-section {
+            margin-bottom: 60px;
+        }
+
+        .earn-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .earn-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .earn-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 121, 107, 0.15);
+        }
+
+        .earn-icon {
+            font-size: 2.5rem;
+            color: #00796B;
+            margin-bottom: 20px;
+        }
+
+        .earn-card h3 {
+            color: #00796B;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .earn-card p {
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .points-value {
+            color: #00796B;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Rewards Section */
+        .rewards-section {
+            margin-bottom: 60px;
+        }
+
+        .rewards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .reward-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .reward-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 121, 107, 0.15);
+        }
+
+        .reward-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .reward-details {
+            padding: 25px;
+        }
+
+        .reward-details h3 {
+            color: #00796B;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .reward-details p {
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .reward-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .reward-points {
+            color: #00796B;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .redeem-btn {
+            background: #00796B;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .redeem-btn:hover {
+            background: #005f56;
+        }
+
+        /* Points History */
+        .history-section {
+            margin-bottom: 60px;
+        }
+
+        .history-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .history-table th, 
+        .history-table td {
+            padding: 15px 20px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .history-table th {
+            background: #00796B;
+            color: white;
+            font-weight: 500;
+        }
+
+        .history-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .history-table tr:hover {
+            background: #f8f8f8;
+        }
+
+        .points-earned {
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        .points-used {
+            color: #F44336;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .earn-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+            
+            .nav-menu {
+                gap: 15px;
+            }
+            
+            .points-banner {
+                padding: 60px 20px;
+            }
+            
+            .points-content {
+                padding: 0 20px;
+            }
+            
+            .earn-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .points-banner h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Swasthya Logo">
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="homepageee.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="ourservices.html">Our Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="fnq.html">F&Q</a>
+            <a href="contactus.html">Contact Us</a>
+            <a href="points.html" style="color: #00796B; font-weight: bold;">Swasthya Points</a>
+        </nav>
+        
+        <a href="profile.html" class="profile-icon">
+            <i class='bx bx-user'></i>
+        </a>
+    </header>
+    
+    <!-- Points Banner -->
+    <section class="points-banner">
+        <h1>Swasthya Rewards</h1>
+        <p>Earn points for every health-positive action you take and redeem them for exciting rewards and benefits</p>
+        
+        <div class="points-display">
+            <div class="points-count">1,250</div>
+            <div class="points-label">Your Swasthya Points</div>
+        </div>
+    </section>
+    
+    <!-- Points Content -->
+    <div class="points-content">
+        <!-- How to Earn Points Section -->
+        <section class="earn-section">
+            <h2 class="section-title">How to Earn Points</h2>
+            
+            <div class="earn-grid">
+                <!-- Card 1 -->
+                <div class="earn-card">
+                    <div class="earn-icon">
+                        <i class='bx bx-calendar-check'></i>
+                    </div>
+                    <h3>Book Appointments</h3>
+                    <p>Get 50 points for every appointment you book through Swasthya</p>
+                    <div class="points-value">+50 points</div>
+                </div>
+                
+                <!-- Card 2 -->
+                <div class="earn-card">
+                    <div class="earn-icon">
+                        <i class='bx bx-capsule'></i>
+                    </div>
+                    <h3>Order Medicines</h3>
+                    <p>Earn 1 point for every ₹10 spent on medicine orders</p>
+                    <div class="points-value">1 pt/₹10</div>
+                </div>
+                
+                <!-- Card 3 -->
+                <div class="earn-card">
+                    <div class="earn-icon">
+                        <i class='bx bx-upload'></i>
+                    </div>
+                    <h3>Upload Prescriptions</h3>
+                    <p>Get 25 points for each prescription you upload to your health profile</p>
+                    <div class="points-value">+25 points</div>
+                </div>
+                
+                <!-- Card 4 -->
+                <div class="earn-card">
+                    <div class="earn-icon">
+                        <i class='bx bx-check-circle'></i>
+                    </div>
+                    <h3>Complete Health Checkups</h3>
+                    <p>Earn 100 points for completing recommended health screenings</p>
+                    <div class="points-value">+100 points</div>
+                </div>
+                
+                <!-- Card 5 -->
+                <div class="earn-card">
+                    <div class="earn-icon">
+                        <i class='bx bx-group'></i>
+                    </div>
+                    <h3>Refer Friends</h3>
+                    <p>Get 200 points for each friend who signs up with your referral code</p>
+                    <div class="points-value">+200 points</div>
+                </div>
+                
+                <!-- Card 6 -->
+                <div class="earn-card">
+                    <div class="earn-icon">
+                        <i class='bx bx-book'></i>
+                    </div>
+                    <h3>Read Health Articles</h3>
+                    <p>Earn 10 points for reading health education articles</p>
+                    <div class="points-value">+10 points</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Rewards Section -->
+        <section class="rewards-section">
+            <h2 class="section-title">Redeem Your Points</h2>
+            
+            <div class="rewards-grid">
+                <!-- Reward 1 -->
+                <div class="reward-card">
+                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Doctor Consultation" class="reward-image">
+                    <div class="reward-details">
+                        <h3>Free Doctor Consultation</h3>
+                        <p>Redeem points for a free consultation with our specialists</p>
+                        <div class="reward-footer">
+                            <div class="reward-points">500 points</div>
+                            <button class="redeem-btn">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reward 2 -->
+                <div class="reward-card">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Medicine Discount" class="reward-image">
+                    <div class="reward-details">
+                        <h3>20% Medicine Discount</h3>
+                        <p>Get 20% off on your next medicine order</p>
+                        <div class="reward-footer">
+                            <div class="reward-points">300 points</div>
+                            <button class="redeem-btn">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reward 3 -->
+                <div class="reward-card">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Health Checkup" class="reward-image">
+                    <div class="reward-details">
+                        <h3>Basic Health Checkup</h3>
+                        <p>Complimentary basic health screening package</p>
+                        <div class="reward-footer">
+                            <div class="reward-points">750 points</div>
+                            <button class="redeem-btn">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Reward 4 -->
+                <div class="reward-card">
+                    <img src="https://images.unsplash.com/photo-1530026186672-2cd00ffc50fe?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Fitness Tracker" class="reward-image">
+                    <div class="reward-details">
+                        <h3>Fitness Tracker</h3>
+                        <p>Premium fitness tracker to monitor your health metrics</p>
+                        <div class="reward-footer">
+                            <div class="reward-points">5,000 points</div>
+                            <button class="redeem-btn">Redeem</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Points History Section -->
+        <section class="history-section">
+            <h2 class="section-title">Your Points History</h2>
+            
+            <table class="history-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Activity</th>
+                        <th>Points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>May 15, 2024</td>
+                        <td>Booked appointment with Dr. Sharma</td>
+                        <td class="points-earned">+50</td>
+                    </tr>
+                    <tr>
+                        <td>May 12, 2024</td>
+                        <td>Medicine order (₹1,250)</td>
+                        <td class="points-earned">+125</td>
+                    </tr>
+                    <tr>
+                        <td>May 10, 2024</td>
+                        <td>Uploaded prescription</td>
+                        <td class="points-earned">+25</td>
+                    </tr>
+                    <tr>
+                        <td>May 5, 2024</td>
+                        <td>Completed annual health checkup</td>
+                        <td class="points-earned">+100</td>
+                    </tr>
+                    <tr>
+                        <td>May 1, 2024</td>
+                        <td>Redeemed 20% medicine discount</td>
+                        <td class="points-used">-300</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-header">
+                <h2>SWASTHYA</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class='bx bx-phone'></i>
+                        <span>+91 123-123-1238</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class='bx bx-envelope'></i>
+                        <span>swasthyacare@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="links-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="homepageee.html">Home</a></li>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="ourservices.html">Our Services</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="links-column">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="bookappointment.html">Appointments</a></li>
+                        <li><a href="healthcard.html">Health Card</a></li>
+                        <li><a href="pharmacy.html">Pharmacy</a></li>
+                        <li><a href="telemedicine.html">Telemedicine</a></li>
+                    </ul>
+                </div>
+                
+                <div class="links-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="privacy.html">Privacy Policy</a></li>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="cookies.html">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Swasthya. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <style>
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg, #004d40, #00796B);
+            color: white;
+            padding: 50px 0 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .footer-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .links-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .links-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .links-column ul {
+            list-style: none;
+        }
+
+        .links-column li {
+            margin-bottom: 10px;
+        }
+
+        .links-column a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .links-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</body>
+</html>

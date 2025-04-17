@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swasthya - About Us</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: #f4f4f4;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 180px;
+            height: auto;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-menu a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+        
+        .nav-menu a:hover {
+            color: #005f56;
+        }
+        
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #00796B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        /* Color Bar Section */
+        .color-bar {
+            background-color: #00796B;
+            padding: 60px 50px;
+            color: white;
+            text-align: center;
+        }
+        
+        .color-bar h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .color-bar p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            padding: 40px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Info Box Styles */
+        .info-box {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .info-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .info-box h2 {
+            color: #00796B;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .info-box h3 {
+            color: #00796B;
+            margin: 20px 0 15px;
+            font-size: 1.4rem;
+        }
+        
+        .info-box p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        
+        .info-box strong {
+            font-weight: bold;
+            color: #333;
+        }
+        
+        /* Button Styles */
+        .discover-btn {
+            background-color: #00796B;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+            display: inline-block;
+        }
+        
+        .discover-btn:hover {
+            background-color: #005f56;
+        }
+        
+        /* Testimonial Box */
+        .testimonial-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid #00796B;
+        }
+        
+        .testimonial-box h3 {
+            color: #00796B;
+        }
+
+
+
+
+        /* Coin Button Styles */
+        .coin-btn {
+            background: linear-gradient(135deg, #FFD700, #FFC000);
+            color: #8B7500;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .coin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        .coin-btn i {
+            font-size: 1.2rem;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #00796B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* New wrapper for coin and profile */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .earn-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+            
+            .nav-menu {
+                gap: 15px;
+            }
+            
+            .coins-banner {
+                padding: 60px 20px;
+            }
+            
+            .coins-content {
+                padding: 0 20px;
+            }
+            
+            .earn-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .coins-banner h1 {
+                font-size: 2.2rem;
+            }
+
+            .header-actions {
+                margin-top: 10px;
+            }
+        }
+
+        .btn {
+            text-decoration: none;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Swasthya Logo">
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="homepageee.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="ourservices.html">Our Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="fnq.html">F&Q</a>
+            <a href="contactus.html">Contact Us</a>
+        </nav>
+        
+        <div class="header-actions">
+            <a href="swasthyacoins.html" class="btn"><button class="coin-btn">
+                <i class='bx bx-coin'></i>
+                <span>1,250</span>
+            </button></a>
+            
+            <a href="profile.html" class="profile-icon">
+                <i class='bx bx-user'></i>
+            </a>
+        </div>
+    </header>
+    
+    <!-- Color Bar Section -->
+    <section class="color-bar">
+        <h1>About Us</h1>
+        <p>Learn about our mission to transform healthcare accessibility and quality</p>
+    </section>
+    
+    <!-- Main Content Section -->
+    <main class="main-content">
+        <!-- Welcome Box -->
+        <div class="info-box">
+            <p><strong>Welcome to Swasthya</strong>, your personalized gateway to comprehensive healthcare management. Our platform offers personalized health profiles, secure medical history storage, and easy access to essential healthcare resources. Each individual receives a unique Swasthya Health Card, granting instant access to their health information. We are dedicated to collecting vital data for efficient and professional healthcare management. Explore our blog section for insightful health-related articles and updates. Swasthya Health Card is designed to provide a seamless healthcare experience, ensuring that your health information is secure and readily available whenever you need it. Our platform is committed to empowering individuals with the tools they need for proactive health management and informed decision-making.</p>
+        </div>
+        
+        <!-- Mission Box -->
+        <div class="info-box">
+            <h2>Our Mission</h2>
+            <p>At Swasthya Health Card, our mission is to revolutionize healthcare accessibility by offering personalized health solutions tailored to each individual. We are dedicated to empowering users with comprehensive health profiles, secure medical data storage, and easy access to essential healthcare resources. Our commitment is to provide a user-friendly platform that enhances healthcare management and promotes overall well-being. We strive to be the leading provider of personalized healthcare solutions, ensuring that individuals have the resources they need to make informed health decisions and lead healthier lives. Join us in our mission to transform healthcare management and empower individuals to take control of their well-being.</p>
+            <button class="discover-btn">Discover More</button>
+        </div>
+        
+        <!-- Join Us Box -->
+        <div class="info-box">
+            <h2>JOIN US</h2>
+            <p>Embark on your healthcare journey with Swasthya Health Card. Our platform is designed to provide you with the tools and resources you need to manage your health effectively. Whether you're looking to track your medical history, access healthcare resources, or connect with healthcare professionals, we've got you covered.</p>
+            
+            <h3>Start Your Journey</h3>
+            <p>Join us today and experience personalized healthcare management at your fingertips. Take control of your health and well-being with Swasthya Health Card.</p>
+        </div>
+        
+        <!-- Testimonial Box -->
+        <div class="info-box testimonial-box">
+            <h3>Testimonial</h3>
+            <p>Swasthya Health Card has transformed the way I manage my health. It's convenient, secure, and provides me with peace of mind knowing that my health information is easily accessible whenever I need it.</p>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-header">
+                <h2>SWASTHYA</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class='bx bx-phone'></i>
+                        <span>+91 123-123-1238</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class='bx bx-envelope'></i>
+                        <span>swasthyacare@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="links-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="links-column">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#">Health Card</a></li>
+                        <li><a href="#">Primary Care</a></li>
+                        <li><a href="#">Specialty Care</a></li>
+                        <li><a href="#">Emergency Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="links-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Swasthya. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add this CSS to your style section -->
+    <style>
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg,  #004d40,  #00796B);
+            color: white;
+            padding: 50px 0 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .footer-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .links-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .links-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .links-column ul {
+            list-style: none;
+        }
+
+        .links-column li {
+            margin-bottom: 10px;
+        }
+
+        .links-column a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .links-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</body>
+</html>

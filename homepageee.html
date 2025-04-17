@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swasthya - Home</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: #f4f4f4;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo img {
+            width: 180px;
+            height: auto;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            color: #000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+
+        .nav-menu a:hover {
+            color: #005f56;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #00796B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            height: 65vh;
+            background: linear-gradient(135deg, #00796B, #004d40);
+            padding: 0 50px;
+            color: white;
+        }
+
+        .hero-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-right: 40px;
+        }
+
+        .hero-left h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero-left p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-btn {
+            background: white;
+            color: black;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .hero-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        .hero-right {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .info-box {
+            background: rgba(26, 27, 27, 0.6);
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 600px;
+        }
+
+        .info-box h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .info-box p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .info-btn {
+            background: white;
+            color: black;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .info-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Health Card Section */
+        .health-card-section {
+            padding: 80px 50px;
+            background-color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: #0e0f0f;
+            margin-bottom: 15px;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        .card-content {
+            display: flex;
+            gap: 40px;
+        }
+
+        .card-image {
+    flex: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background: linear-gradient(to bottom, #f9f9f9, #e8f5e9);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease; /* Added for smooth hover transition */
+}
+
+.card-image:hover {
+    box-shadow: 0 8px 25px rgba(0, 121, 107, 0.15); /* Enhanced shadow on hover */
+}
+
+.card-image-placeholder {
+    width: 100%;
+    height: 300px;
+    background-color: #e0e0e0;
+    border: 2px dashed #aaa;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #777;
+    font-size: 1.1rem;
+}
+
+.card-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    object-fit: cover;
+    border: 3px solid #e8f5e9; /* Light border matching your gradient */
+    padding: 5px;
+    background: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+}
+
+.card-image img:hover {
+    border-color: #00796B; /* Your brand color on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+    box-shadow: 0 5px 15px rgba(0, 121, 107, 0.2); /* Deeper shadow */
+}
+
+        .card-details {
+            flex: 60%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+
+
+        .card-text-box {
+            background: linear-gradient(to bottom, #f9f9f9, #e8f5e9);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .card-text-box p {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .apply-btn-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        .apply-btn {
+            background: linear-gradient(to right, #00796B, #005f56);
+            color: white;
+            border: none;
+            border-radius: 20px;
+            padding: 12px 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .apply-btn:hover {
+            background: linear-gradient(to right, #005f56, #004d40);
+            transform: translateY(-2px);
+        }
+
+        /* Key Features Section */
+        .key-features {
+            padding: 80px 50px;
+            background: linear-gradient(to bottom, #c8eeea, #ffffff);
+        }
+
+        .features-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .feature-box {
+            background: linear-gradient(to bottom, white, #f0f0f0);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-box:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #00796B;
+            margin-bottom: 20px;
+        }
+
+        .feature-box h3 {
+            font-size: 1.4rem;
+            color: #00796B;
+            margin-bottom: 15px;
+        }
+
+        .feature-box p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 50px;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .testimonials-header h2 {
+            font-size: 2.5rem;
+            color: #00796B;
+            margin-bottom: 15px;
+        }
+
+        .testimonials-header p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 50px;
+        }
+
+        .testimonials-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .testimonial-box {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            width: 100%;
+            max-width: 350px;
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .testimonial-profile {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        .blue-profile {
+            background: #4285F4;
+        }
+
+        .pink-profile {
+            background: #EA4335;
+        }
+
+        .testimonial-text {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-name {
+            font-size: 1.2rem;
+            color: #00796B;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .testimonial-role {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .card-content {
+                flex-direction: column;
+            }
+            
+            .card-image, .card-details {
+                flex: 100%;
+            }
+            
+            .features-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+            
+            .nav-menu {
+                gap: 15px;
+            }
+            
+            .hero {
+                flex-direction: column;
+                height: auto;
+                padding: 50px 20px;
+            }
+            
+            .hero-left, .hero-right {
+                padding: 20px 0;
+            }
+            
+            .features-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .health-card-section, .key-features, .testimonials {
+                padding: 50px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+        }
+
+
+
+        /* Coin Button Styles */
+        .coin-btn {
+            background: linear-gradient(135deg, #FFD700, #FFC000);
+            color: #8B7500;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .coin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        .coin-btn i {
+            font-size: 1.2rem;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #00796B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* New wrapper for coin and profile */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .earn-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+            
+            .nav-menu {
+                gap: 15px;
+            }
+            
+            .coins-banner {
+                padding: 60px 20px;
+            }
+            
+            .coins-content {
+                padding: 0 20px;
+            }
+            
+            .earn-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .coins-banner h1 {
+                font-size: 2.2rem;
+            }
+
+            .header-actions {
+                margin-top: 10px;
+            }
+        }
+        
+        .btn {
+            text-decoration: none;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Swasthya Logo">
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="homepageee.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="ourservices.html">Our Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="fnq.html">F&Q</a>
+            <a href="contactus.html">Contact Us</a>
+        </nav>
+        
+        <div class="header-actions">
+            <a href="swasthyacoins.html" class="btn"><button class="coin-btn">
+                <i class='bx bx-coin'></i>
+                <span>1,250</span>
+            </button></a>
+            
+            <a href="profile.html" class="profile-icon">
+                <i class='bx bx-user'></i>
+            </a>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-left">
+            <h1>WELCOME TO SWASTHYA</h1>
+            <p>Your partner in health and wellness, providing comprehensive healthcare solutions for a healthier tomorrow.</p>
+            <div class="hero-buttons">
+                <button class="hero-btn" onclick="window.location.href='ourservices.html'">Our Services</button>
+                <button class="hero-btn" onclick="window.location.href='contactus.html'">Contact Us</button>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="info-box">
+                <h2>Your Health, Our Priority</h2>
+                <p>Committed to providing top-notch healthcare services for you and your family.</p>
+                <button class="info-btn" onclick="window.location.href='bookappointment.html'">Book an appointment</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Health Card Section -->
+    <section class="health-card-section">
+        <div class="section-header">
+            <h2>INTRODUCING SWASTHYA HEALTH CARD</h2>
+            <p>A revolutionary approach to managing your healthcare journey...</p>
+        </div>
+        
+        <div class="card-content">
+            <div class="card-image">
+                <img src="profile-image.png" alt="Profile Image">
+            </div>
+            
+            <div class="card-details">
+                <div class="card-text-box">
+                    <p>Swasthya Health Card is a revolutionary tool that helps you keep track of all your vital health information in one place. From minor details to major health concerns, this card ensures you have all the information you need at your fingertips.</p>
+                    <p>With the Swasthya Card, you can take control of your health and make informed decisions about your well-being. By becoming a card holder, you will gain access to a wide range of facilities that will enhance your overall experience.</p>
+                    
+                    <div class="apply-btn-container">
+                        <button class="apply-btn" onclick="window.location.href='form.html'">Apply Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Key Features Section -->
+    <section class="key-features">
+        <div class="section-header">
+            <h2>OUR KEY FEATURES</h2>
+            <p>Discover the benefits that make the Swasthya Health Card essential for your healthcare journey</p>
+        </div>
+        
+        <div class="features-container">
+            <!-- Feature 1 -->
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class='bx bx-heart'></i>
+                </div>
+                <h3>Complete Health Tracking</h3>
+                <p>Monitor all your vital health information in one convenient place</p>
+            </div>
+            
+            <!-- Feature 2 -->
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class='bx bx-clipboard'></i>
+                </div>
+                <h3>Medical Records Access</h3>
+                <p>Access your complete medical history whenever you need it</p>
+            </div>
+            
+            <!-- Feature 3 -->
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class='bx bx-time-five'></i>
+                </div>
+                <h3>Priority Appointments</h3>
+                <p>Get priority scheduling for consultations and treatments</p>
+            </div>
+            
+            <!-- Feature 4 -->
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class='bx bx-group'></i>
+                </div>
+                <h3>Family Coverage</h3>
+                <p>Add family members to your health card for comprehensive care</p>
+            </div>
+            
+            <!-- Feature 5 -->
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class='bx bx-trophy'></i>
+                </div>
+                <h3>Premium Healthcare</h3>
+                <p>Access to premium healthcare services and specialists</p>
+            </div>
+            
+            <!-- Feature 6 -->
+            <div class="feature-box">
+                <div class="feature-icon">
+                    <i class='bx bx-headphone'></i>
+                </div>
+                <h3>24/7 Support</h3>
+                <p>Round-the-clock customer support for all your healthcare needs</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="section-header testimonials-header">
+            <h2>What our members say</h2>
+            <p>Don't just take our word for it - hear from our satisfied members about their experience with Swasthya</p>
+        </div>
+        
+        <div class="testimonials-container">
+            <!-- Testimonial 1 -->
+            <div class="testimonial-box">
+                <div class="testimonial-profile blue-profile">R</div>
+                <p class="testimonial-text">"The Swasthya Health Card has completely transformed how I manage my healthcare. Having all my medical information in one place makes appointments and emergencies so much easier."</p>
+                <h4 class="testimonial-name">Rahul Sharma</h4>
+                <p class="testimonial-role">User since 2021</p>
+            </div>
+            
+            <!-- Testimonial 2 -->
+            <div class="testimonial-box">
+                <div class="testimonial-profile pink-profile">P</div>
+                <p class="testimonial-text">"As someone managing healthcare for my entire family, the Swasthya card has been a blessing. The priority support and appointment scheduling save us so much time."</p>
+                <h4 class="testimonial-name">Priya Patel</h4>
+                <p class="testimonial-role">Family Plan Member</p>
+            </div>
+            
+            <!-- Testimonial 3 -->
+            <div class="testimonial-box">
+                <div class="testimonial-profile blue-profile">A</div>
+                <p class="testimonial-text">"The access to specialized care and personalized health recommendations has made a tremendous difference in my wellness journey. Highly recommend to everyone!"</p>
+                <h4 class="testimonial-name">Arjun Singh</h4>
+                <p class="testimonial-role">Premium Member</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Content Section -->
+    <main class="main-content">
+        <!-- Additional content can go here -->
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-header">
+                <h2>SWASTHYA</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class='bx bx-phone'></i>
+                        <span>+91 123-123-1238</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class='bx bx-envelope'></i>
+                        <span>swasthyacare@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="links-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="links-column">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#">Health Card</a></li>
+                        <li><a href="#">Primary Care</a></li>
+                        <li><a href="#">Specialty Care</a></li>
+                        <li><a href="#">Emergency Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="links-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Swasthya. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add this CSS to your style section -->
+    <style>
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg,  #004d40,  #00796B);
+            color: white;
+            padding: 50px 0 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .footer-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .links-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .links-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .links-column ul {
+            list-style: none;
+        }
+
+        .links-column li {
+            margin-bottom: 10px;
+        }
+
+        .links-column a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .links-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</body>
+</html>

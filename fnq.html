@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swasthya - Home</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: #f4f4f4;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 180px;
+            height: auto;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-menu a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+        
+        .nav-menu a:hover {
+            color: #005f56;
+        }
+        
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #00796B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        /* FAQ Section */
+        .faq-intro {
+            width: 100%;
+            background-color: #00796B;
+            color: white;
+            padding: 60px 50px;
+            text-align: center;
+        }
+        
+        .faq-intro h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .faq-intro p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-container {
+            padding: 40px 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: white;
+        }
+        
+        .faq-question {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            background-color: #f9f9f9;
+        }
+        
+        .faq-question:hover {
+            background-color: #f0f0f0;
+        }
+        
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+        
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+        
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            padding: 40px 50px;
+        }
+
+
+
+
+        /* Coin Button Styles */
+        .coin-btn {
+            background: linear-gradient(135deg, #FFD700, #FFC000);
+            color: #8B7500;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .coin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        .coin-btn i {
+            font-size: 1.2rem;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #00796B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* New wrapper for coin and profile */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .earn-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+            
+            .nav-menu {
+                gap: 15px;
+            }
+            
+            .coins-banner {
+                padding: 60px 20px;
+            }
+            
+            .coins-content {
+                padding: 0 20px;
+            }
+            
+            .earn-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .coins-banner h1 {
+                font-size: 2.2rem;
+            }
+
+            .header-actions {
+                margin-top: 10px;
+            }
+        }
+
+        .btn {
+            text-decoration: none;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Swasthya Logo">
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="homepageee.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="ourservices.html">Our Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="fnq.html">F&Q</a>
+            <a href="contactus.html">Contact Us</a>
+        </nav>
+        
+        <div class="header-actions">
+            <a href="swasthyacoins.html" class="btn"><button class="coin-btn">
+                <i class='bx bx-coin'></i>
+                <span>1,250</span>
+            </button></a>
+            
+            <a href="profile.html" class="profile-icon">
+                <i class='bx bx-user'></i>
+            </a>
+        </div>
+    </header>
+    
+    <!-- FAQ Section - Now 100% width -->
+    <div class="faq-intro">
+        <h1>Frequently Asked Questions</h1>
+        <p>Find answers to common questions about our services and health card.</p>
+    </div>
+    
+    <div class="faq-container">
+        <!-- FAQ Items (same as before) -->
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What is the Swasthya Health Card?</span>
+                <i class='bx bx-plus faq-toggle'></i>
+            </div>
+            <div class="faq-answer">
+                <p>The Swasthya Health Card is a comprehensive health management tool that helps you track and access your vital health information in one place. It provides benefits like priority appointments, personalized healthcare plans, and access to our network of healthcare facilities.</p>
+            </div>
+        </div>
+        
+        <!-- Remaining FAQ items (2-10) would be here -->
+        <!-- FAQ Item 2 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How do I apply for a Swasthya Health Card?</span>
+                <i class='bx bx-plus faq-toggle'></i>
+            </div>
+            <div class="faq-answer">
+                <p>You can apply for a Swasthya Health Card by visiting our website and filling out the application form, visiting any of our healthcare centers in person, or calling our customer service line. The application process is simple and requires basic personal and health information.</p>
+            </div>
+        </div>
+        
+        <!-- FAQ Item 3 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What are the benefits of having a Swasthya Health Card?</span>
+                <i class='bx bx-plus faq-toggle'></i>
+            </div>
+            <div class="faq-answer">
+                <p>Benefits include centralized health information management, priority appointments, discounts on healthcare services, access to specialized care, personalized health recommendations, and 24/7 customer support for all your healthcare needs.</p>
+            </div>
+        </div>
+        
+        <!-- FAQ Item 4 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Can I add my family members to my health card plan?</span>
+                <i class='bx bx-plus faq-toggle'></i>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, we offer family plans that allow you to add your spouse, children, and dependent parents to your health card. Each family member receives their own card that is linked to the family account, making it easy to manage healthcare for the whole family.</p>
+            </div>
+        </div>
+        
+        <!-- FAQ Item 5 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How secure is my health information with Swasthya?</span>
+                <i class='bx bx-plus faq-toggle'></i>
+            </div>
+            <div class="faq-answer">
+                <p>We take data security very seriously. All health information is stored in encrypted formats on secure servers that comply with healthcare data protection regulations. We never share your information with third parties without your explicit consent.</p>
+            </div>
+        </div>
+        
+        <!-- FAQ Item 6 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Do you offer telehealth consultations?</span>
+                <i class='bx bx-plus faq-toggle'></i>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, we offer telehealth consultations for a wide range of non-emergency medical concerns. Health Card members receive priority scheduling for telehealth appointments and can access our network of specialists remotely.</p>
+            </div>
+        </div>
+        
+        <!-- FAQ Item 7 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What if I need to see a specialist?</span>
+                <i class='bx bx-plus faq-toggle'></i>
+            </div>
+            <div class="faq-answer">
+                <p>As a Health Card member, you have access to our extensive network of specialists across various medical fields. We can facilitate referrals and help schedule appointments based on your healthcare needs.</p>
+            </div>
+        </div>
+        
+        <!-- FAQ Item 8 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>Are there different tiers of Health Cards?</span>
+                <i class='bx bx-plus faq-toggle'></i>
+            </div>
+            <div class="faq-answer">
+                <p>Yes, we offer Basic, Premium, and Elite Health Card tiers, each with different levels of benefits and services. You can choose the tier that best fits your healthcare needs and budget.</p>
+            </div>
+        </div>
+        
+        <!-- FAQ Item 9 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>How can I renew my Health Card?</span>
+                <i class='bx bx-plus faq-toggle'></i>
+            </div>
+            <div class="faq-answer">
+                <p>Health Cards typically have an annual renewal. You'll receive notification before your card expires, and you can renew online, by phone, or in person at any of our healthcare centers.</p>
+            </div>
+        </div>
+        
+        <!-- FAQ Item 10 -->
+        <div class="faq-item">
+            <div class="faq-question">
+                <span>What should I do if I lose my Health Card?</span>
+                <i class='bx bx-plus faq-toggle'></i>
+            </div>
+            <div class="faq-answer">
+                <p>If you lose your physical Health Card, please contact our customer service immediately. We can issue a replacement card and ensure your account remains secure. Your health information remains accessible through our secure online portal during this time.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main Content Section -->
+    <main class="main-content">
+        <!-- Additional content can go here -->
+    </main>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-header">
+                <h2>SWASTHYA</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class='bx bx-phone'></i>
+                        <span>+91 123-123-1238</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class='bx bx-envelope'></i>
+                        <span>swasthyacare@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="links-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="links-column">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#">Health Card</a></li>
+                        <li><a href="#">Primary Care</a></li>
+                        <li><a href="#">Specialty Care</a></li>
+                        <li><a href="#">Emergency Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="links-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Swasthya. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add this CSS to your style section -->
+    <style>
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg,  #004d40,  #00796B);
+            color: white;
+            padding: 50px 0 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .footer-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .links-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .links-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .links-column ul {
+            list-style: none;
+        }
+
+        .links-column li {
+            margin-bottom: 10px;
+        }
+
+        .links-column a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .links-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

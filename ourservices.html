@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swasthya - Our Services</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        
+        /* Header Styles */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: #f4f4f4;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo img {
+            width: 180px;
+            height: auto;
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-menu a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+        }
+        
+        .nav-menu a:hover {
+            color: #005f56;
+        }
+        
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #00796B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        /* Services Banner */
+        .services-banner {
+            background-color: #00796B;
+            color: white;
+            padding: 60px 50px;
+            text-align: center;
+        }
+        
+        .services-banner h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .services-banner p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            padding: 40px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        /* Service Box */
+        .service-box {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-align: center;
+        }
+        
+        .service-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            color: #00796B;
+            margin-bottom: 20px;
+        }
+        
+        .service-box h3 {
+            color: #00796B;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        
+        .service-box p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        /* Button Styles */
+        .learn-btn {
+            background-color: #00796B;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-block;
+        }
+        
+        .learn-btn:hover {
+            background-color: #005f56;
+        }
+        
+        /* Contact Box */
+        .contact-box {
+            background-color: white;
+            border-radius: 8px;
+            padding: 40px;
+            margin-top: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        
+        .contact-box strong {
+            font-size: 1.3rem;
+            color: #00796B;
+            display: block;
+            margin-bottom: 20px;
+        }
+        
+        .contact-box p {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 25px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .contact-btn {
+            background-color: #00796B;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .contact-btn:hover {
+            background-color: #005f56;
+        }
+
+
+
+
+        /* Coin Button Styles */
+        .coin-btn {
+            background: linear-gradient(135deg, #FFD700, #FFC000);
+            color: #8B7500;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .coin-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        .coin-btn i {
+            font-size: 1.2rem;
+        }
+
+        .profile-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #00796B;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* New wrapper for coin and profile */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .earn-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+            }
+            
+            .nav-menu {
+                gap: 15px;
+            }
+            
+            .coins-banner {
+                padding: 60px 20px;
+            }
+            
+            .coins-content {
+                padding: 0 20px;
+            }
+            
+            .earn-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-menu {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .coins-banner h1 {
+                font-size: 2.2rem;
+            }
+
+            .header-actions {
+                margin-top: 10px;
+            }
+        }
+
+        .btn {
+            text-decoration: none;
+        }
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="logo">
+            <img src="logo.png" alt="Swasthya Logo">
+        </div>
+        
+        <nav class="nav-menu">
+            <a href="homepageee.html">Home</a>
+            <a href="about.html">About Us</a>
+            <a href="ourservices.html">Our Services</a>
+            <a href="blog.html">Blog</a>
+            <a href="fnq.html">F&Q</a>
+            <a href="contactus.html">Contact Us</a>
+        </nav>
+        
+        <div class="header-actions">
+            <a href="swasthyacoins.html" class="btn"><button class="coin-btn">
+                <i class='bx bx-coin'></i>
+                <span>1,250</span>
+            </button></a>
+            
+            <a href="profile.html" class="profile-icon">
+                <i class='bx bx-user'></i>
+            </a>
+        </div>
+    </header>
+    
+    <!-- Services Banner -->
+    <section class="services-banner">
+        <h1>Our Services</h1>
+        <p>Comprehensive healthcare solutions designed with your needs in mind</p>
+    </section>
+    
+    <!-- Main Content Section -->
+    <main class="main-content">
+        <!-- Services Grid -->
+        <div class="services-grid">
+            <!-- Service Box 1 -->
+            <div class="service-box">
+                <div class="service-icon">
+                    <i class='bx bx-heart'></i>
+                </div>
+                <h3>Swasthya Health Card</h3>
+                <p>Our revolutionary health card system that helps you manage your health information and access premium services.</p>
+                <button class="learn-btn">Learn More</button>
+            </div>
+            
+            <!-- Service Box 2 -->
+            <div class="service-box">
+                <div class="service-icon">
+                    <i class='bx bx-plus-medical'></i>
+                </div>
+                <h3>Primary Care</h3>
+                <p>Comprehensive primary healthcare services for patients of all ages, from preventive care to chronic disease management.</p>
+                <button class="learn-btn">Learn More</button>
+            </div>
+            
+            <!-- Service Box 3 -->
+            <div class="service-box">
+                <div class="service-icon">
+                    <i class='bx bx-scan'></i>
+                </div>
+                <h3>Diagnostic Services</h3>
+                <p>State-of-the-art diagnostic facilities including laboratory tests, imaging services, and specialized screenings.</p>
+                <button class="learn-btn">Learn More</button>
+            </div>
+            
+            <!-- Service Box 4 -->
+            <div class="service-box">
+                <div class="service-icon">
+                    <i class='bx bx-capsule'></i>
+                </div>
+                <h3>Pharmacy Services</h3>
+                <p>Convenient access to prescribed medications with expert pharmacist consultation and medication management.</p>
+                <button class="learn-btn">Learn More</button>
+            </div>
+            
+            <!-- Service Box 5 -->
+            <div class="service-box">
+                <div class="service-icon">
+                    <i class='bx bx-user-voice'></i>
+                </div>
+                <h3>Specialist Consultations</h3>
+                <p>Access to a network of specialist physicians across various medical specialties for expert care.</p>
+                <button class="learn-btn">Learn More</button>
+            </div>
+            
+            <!-- Service Box 6 -->
+            <div class="service-box">
+                <div class="service-icon">
+                    <i class='bx bx-time'></i>
+                </div>
+                <h3>Telehealth Services</h3>
+                <p>Virtual consultations with healthcare providers from the comfort of your home for non-emergency concerns.</p>
+                <button class="learn-btn">Learn More</button>
+            </div>
+        </div>
+        
+        <!-- Contact Box -->
+        <div class="contact-box">
+            <strong>Looking for a Specific Service?</strong>
+            <p>Our team of healthcare professionals is ready to assist you with any healthcare needs you may have. Contact us to learn more about our services or to schedule an appointment.</p>
+            <button class="contact-btn">Contact Us</button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-header">
+                <h2>SWASTHYA</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class='bx bx-phone'></i>
+                        <span>+91 123-123-1238</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class='bx bx-envelope'></i>
+                        <span>swasthyacare@gmail.com</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-links">
+                <div class="links-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Services</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div class="links-column">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#">Health Card</a></li>
+                        <li><a href="#">Primary Care</a></li>
+                        <li><a href="#">Specialty Care</a></li>
+                        <li><a href="#">Emergency Services</a></li>
+                    </ul>
+                </div>
+                
+                <div class="links-column">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Swasthya. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Add this CSS to your style section -->
+    <style>
+        /* Footer Styles */
+        .footer {
+            background: linear-gradient(135deg,  #004d40,  #00796B);
+            color: white;
+            padding: 50px 0 0;
+            margin-top: 50px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 50px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .footer-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .links-column {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .links-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .links-column ul {
+            list-style: none;
+        }
+
+        .links-column li {
+            margin-bottom: 10px;
+        }
+
+        .links-column a {
+            color: #e0e0e0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .links-column a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 20px 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</body>
+</html>

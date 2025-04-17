@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swasthya - Sign Up</title>
+    <link rel="stylesheet" href="style1.css" />
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 1vh; /* Starts 20% from the top */
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('bgimage.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: -2;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 1vh;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 121, 107, 0.6); /* RGBA overlay with your theme color */
+            z-index: -1;
+        }
+
+        .container {
+            display: flex;
+            align-items: center;
+            gap: 550px;
+            background-color: #f4f4f4; /* Ensure header is visible */
+            padding: 10px 0;
+        }
+        .container img {
+            width: 250px;
+            height: auto;
+        }
+        .container a {
+            color: #00796B;
+        }
+        
+        .welcome-header {
+            background-color: #00796B;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin: 0;
+        }
+        
+        .login-container {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 380px;
+            margin: 50px auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 1.5rem;
+        }
+
+        .input-field {
+            width: calc(100% - 30px);
+            padding: 14px;
+            margin: 12px 0;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            outline: none;
+            transition: border-color 0.3s ease-in-out;
+            font-size: 16px;
+        }
+
+        .input-field:focus {
+            border-color: #00796B;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 14px;
+            background: #00796B;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background 0.3s ease-in-out;
+            margin-top: 15px;
+        }
+
+        .login-btn:hover {
+            background: #005f56;
+        }
+
+        .login-container p {
+            margin-bottom: 20px; 
+        }
+
+        .terms {
+            margin: 15px 0;
+            text-align: left;
+        }
+
+        .terms a {
+            color: #00796B;
+            text-decoration: none;
+        }
+
+        .terms a:hover {
+            text-decoration: underline;
+        }
+        .terms input[type="checkbox"] {
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="logo.png"/>
+        <nav>
+            <ul>
+                <li><a href="login.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="ourservices.html">Our Services</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="fnq.html">F&Q</a></li>
+                <li><a href="contactus.html">Contact</a></li>
+            </ul>
+        </nav>
+    </div>  
+    
+    <div class="welcome-header">
+        <h1>Welcome to Swasthya</h1>
+    </div>
+
+    <div class="login-container">
+        <h2>Signup to Swasthya</h2>
+        <p><span>Already have an account?</span> <span><a href="home.html">Login</a></span></p>
+        
+        <form id="signupForm">
+            <input type="text" id="firstName" class="input-field" placeholder="First Name" required>
+            <input type="text" id="lastName" class="input-field" placeholder="Last Name" required>
+            <input type="email" id="email" class="input-field" placeholder="Email" required>
+            <input type="password" id="password" class="input-field" placeholder="Password" required>
+            
+            <div class="terms">
+                <input type="checkbox" id="terms" required>
+                <label for="terms">I have read the <a href="terms.html">terms and conditions</a></label>
+            </div>
+            
+            <button type="submit" class="login-btn">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form values
+            const firstName = document.getElementById('firstName').value;
+            const lastName = document.getElementById('lastName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Create user object
+            const user = {
+                firstName: firstName,
+                lastName: lastName,
+                email: email,
+                password: password
+            };
+            
+            // Store user data in localStorage
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            
+            // Also store in users array if you want to keep track of all users
+            let users = JSON.parse(localStorage.getItem('users')) || [];
+            users.push(user);
+            localStorage.setItem('users', JSON.stringify(users));
+            
+            // Redirect to homepageee.html
+            window.location.href = 'homepageee.html';
+        });
+    </script>
+</body>
+</html>
