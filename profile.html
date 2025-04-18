@@ -421,6 +421,201 @@
         }
 
 
+        /* Folder tabs */
+.folder-tabs {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+    margin: 20px 0;
+}
+
+.tab-btn {
+    padding: 12px 20px;
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    border-bottom-color: #00796B;
+    color: #00796B;
+    font-weight: 600;
+}
+
+.tab-btn:hover:not(.active) {
+    background: #f5f5f5;
+}
+
+/* Folder contents */
+.tab-content {
+    display: none;
+    padding: 20px 0;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* File cards */
+.file-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.file-card {
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.file-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.file-preview-container {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.file-preview {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.file-icon {
+    font-size: 48px;
+    color: #00796B;
+}
+
+.file-details {
+    flex-grow: 1;
+}
+
+.file-name {
+    font-weight: 500;
+    display: block;
+    margin-bottom: 5px;
+    word-break: break-word;
+}
+
+.file-size, .file-date {
+    font-size: 12px;
+    color: #666;
+    display: block;
+}
+
+.delete-btn {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    color: #e74c3c;
+    cursor: pointer;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+/* Upload controls */
+.upload-controls {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.file-input-container {
+    margin: 15px 0;
+}
+
+.file-input-label {
+    display: inline-block;
+    padding: 10px 15px;
+    background: #00796B;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.file-input-label:hover {
+    background: #005f56;
+}
+
+.file-input-label input[type="file"] {
+    display: none;
+}
+
+#fileCount {
+    margin-left: 10px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* Empty folder state */
+.empty-folder {
+    text-align: center;
+    padding: 40px 20px;
+    color: #666;
+}
+
+.empty-folder i {
+    font-size: 48px;
+    margin-bottom: 10px;
+    display: block;
+    color: #00796B;
+}
+
+/* Alerts */
+.alert {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s;
+    z-index: 1000;
+}
+
+.alert.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.alert.success {
+    background: #2ecc71;
+}
+
+.alert.error {
+    background: #e74c3c;
+}
+
+.close-alert {
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+
 
 
 
@@ -565,39 +760,263 @@
                             });
                             break;
                             
+                        // case 'uploadDocs':
+                        //     // Load uploaded files
+                        //     const uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
+                            
+                        //     let filesListHTML = '';
+                        //     if (uploadedFiles.length > 0) {
+                        //         filesListHTML = `
+                        //             <div class="uploaded-files">
+                        //                 <h4>Previously Uploaded Files</h4>
+                        //                 ${uploadedFiles.map(file => `
+                        //                     <div class="file-item">
+                        //                         <img src="${file.data}" class="file-preview" alt="${file.name}">
+                        //                         <div class="file-name">${file.name}</div>
+                        //                     </div>
+                        //                 `).join('')}
+                        //             </div>
+                        //         `;
+                        //     }
+                            
+                        //     document.getElementById('content-area').innerHTML = `
+                        //         <div class="account-section">
+                        //             <h3 class="section-title">Upload Documents</h3>
+                        //             <div class="input-group">
+                        //                 <input type="file" id="documentUpload" multiple>
+                        //                 <button class="upload-btn" id="uploadBtn">Upload Selected Files</button>
+                        //             </div>
+                        //             ${filesListHTML}
+                        //         </div>
+                        //     `;
+                            
+                        //     // Set up file upload handler
+                        //     document.getElementById('uploadBtn')?.addEventListener('click', handleFileUpload);
+                        //     break;
+
                         case 'uploadDocs':
-                            // Load uploaded files
-                            const uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles')) || [];
-                            
-                            let filesListHTML = '';
-                            if (uploadedFiles.length > 0) {
-                                filesListHTML = `
-                                    <div class="uploaded-files">
-                                        <h4>Previously Uploaded Files</h4>
-                                        ${uploadedFiles.map(file => `
-                                            <div class="file-item">
-                                                <img src="${file.data}" class="file-preview" alt="${file.name}">
-                                                <div class="file-name">${file.name}</div>
-                                            </div>
-                                        `).join('')}
-                                    </div>
-                                `;
-                            }
-                            
-                            document.getElementById('content-area').innerHTML = `
-                                <div class="account-section">
-                                    <h3 class="section-title">Upload Documents</h3>
-                                    <div class="input-group">
-                                        <input type="file" id="documentUpload" multiple>
-                                        <button class="upload-btn" id="uploadBtn">Upload Selected Files</button>
-                                    </div>
-                                    ${filesListHTML}
+    // Initialize folder structure if not exists
+    let uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles'));
+    if (!uploadedFiles) {
+        uploadedFiles = {
+            heart: [],
+            lungs: [],
+            brain: [],
+            blood: [],
+            bones: [],
+            other: []
+        };
+        localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles));
+    }
+
+    // Folder selection dropdown
+    const folderSelectHTML = `
+        <div class="folder-selection">
+            <label for="folderSelect">Select Body Part:</label>
+            <select id="folderSelect" class="folder-select">
+                <option value="heart">❤️ Heart</option>
+                <option value="lungs">🫁 Lungs</option>
+                <option value="brain">🧠 Brain</option>
+                <option value="blood">💉 Blood</option>
+                <option value="bones">🦴 Bones</option>
+                <option value="other">📁 Other</option>
+            </select>
+        </div>
+    `;
+
+    // Generate folder tabs and content
+    let tabsHTML = '<div class="folder-tabs">';
+    let contentHTML = '<div class="folder-contents">';
+    
+    Object.keys(uploadedFiles).forEach(folder => {
+        const folderName = folder.charAt(0).toUpperCase() + folder.slice(1);
+        const icon = {
+            heart: '❤️',
+            lungs: '🫁',
+            brain: '🧠',
+            blood: '💉',
+            bones: '🦴',
+            other: '📁'
+        }[folder];
+        
+        tabsHTML += `
+            <button class="tab-btn ${folder === 'heart' ? 'active' : ''}" 
+                    data-folder="${folder}">
+                ${icon} ${folderName}
+            </button>
+        `;
+        
+        contentHTML += `
+            <div class="tab-content ${folder === 'heart' ? 'active' : ''}" 
+                 id="${folder}-content">
+                ${uploadedFiles[folder].length > 0 ? 
+                    `<div class="file-grid">
+                        ${uploadedFiles[folder].map(file => `
+                            <div class="file-card">
+                                <div class="file-preview-container">
+                                    ${file.type.includes('image') ? 
+                                        `<img src="${file.data}" class="file-preview" alt="${file.name}">` : 
+                                        `<div class="file-icon">📄</div>`}
                                 </div>
-                            `;
-                            
-                            // Set up file upload handler
-                            document.getElementById('uploadBtn')?.addEventListener('click', handleFileUpload);
-                            break;
+                                <div class="file-details">
+                                    <span class="file-name">${file.name}</span>
+                                    <span class="file-size">${formatFileSize(file.size)}</span>
+                                    <span class="file-date">${new Date(file.uploadedAt).toLocaleDateString()}</span>
+                                </div>
+                                <button class="delete-btn" data-folder="${folder}" data-id="${file.id}">
+                                    <i class='bx bx-trash'></i>
+                                </button>
+                            </div>
+                        `).join('')}
+                    </div>` : 
+                    `<div class="empty-folder">
+                        <i class='bx bx-folder-open'></i>
+                        <p>No documents in this folder</p>
+                    </div>`}
+            </div>
+        `;
+    });
+    
+    tabsHTML += '</div>';
+    contentHTML += '</div>';
+
+    document.getElementById('content-area').innerHTML = `
+        <div class="account-section">
+            <h2><i class='bx bx-upload'></i> Medical Document Upload</h2>
+            
+            <div class="upload-controls">
+                ${folderSelectHTML}
+                <div class="file-input-container">
+                    <label for="documentUpload" class="file-input-label">
+                        <i class='bx bx-cloud-upload'></i> Choose Files
+                        <input type="file" id="documentUpload" multiple>
+                    </label>
+                    <span id="fileCount">0 files selected</span>
+                </div>
+                <button class="primary-btn" id="uploadBtn">
+                    <i class='bx bx-upload'></i> Upload to Selected Folder
+                </button>
+            </div>
+            
+            ${tabsHTML}
+            ${contentHTML}
+        </div>
+    `;
+
+    // Tab switching functionality
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            const folder = btn.dataset.folder;
+            btn.classList.add('active');
+            document.getElementById(`${folder}-content`).classList.add('active');
+            
+            // Update folder select to match active tab
+            document.getElementById('folderSelect').value = folder;
+        });
+    });
+
+    // File selection handler
+    document.getElementById('documentUpload').addEventListener('change', (e) => {
+        document.getElementById('fileCount').textContent = 
+            `${e.target.files.length} file${e.target.files.length !== 1 ? 's' : ''} selected`;
+    });
+
+    // Upload handler
+    document.getElementById('uploadBtn').addEventListener('click', () => {
+        const folder = document.getElementById('folderSelect').value;
+        const files = document.getElementById('documentUpload').files;
+        
+        if (files.length === 0) {
+            showAlert('Please select at least one file', 'error');
+            return;
+        }
+        
+        uploadFiles(folder, files);
+    });
+
+    // Delete handler
+    document.querySelectorAll('.delete-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            if (confirm('Are you sure you want to delete this file?')) {
+                const folder = e.currentTarget.dataset.folder;
+                const fileId = e.currentTarget.dataset.id;
+                deleteFile(folder, fileId);
+            }
+        });
+    });
+    break;
+
+// Helper functions
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+function uploadFiles(folder, files) {
+    const uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles'));
+    const uploadPromises = [];
+    
+    Array.from(files).forEach(file => {
+        const promise = new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                uploadedFiles[folder].push({
+                    id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+                    name: file.name,
+                    type: file.type,
+                    size: file.size,
+                    data: e.target.result,
+                    uploadedAt: new Date().toISOString()
+                });
+                resolve();
+            };
+            reader.readAsDataURL(file);
+        });
+        uploadPromises.push(promise);
+    });
+    
+    Promise.all(uploadPromises).then(() => {
+        localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles));
+        showAlert('Files uploaded successfully!', 'success');
+        loadAccountSection('uploadDocs');
+    });
+}
+
+function deleteFile(folder, fileId) {
+    const uploadedFiles = JSON.parse(localStorage.getItem('uploadedFiles'));
+    uploadedFiles[folder] = uploadedFiles[folder].filter(file => file.id !== fileId);
+    localStorage.setItem('uploadedFiles', JSON.stringify(uploadedFiles));
+    showAlert('File deleted successfully', 'success');
+    loadAccountSection('uploadDocs');
+}
+
+function showAlert(message, type) {
+    const alert = document.createElement('div');
+    alert.className = `alert ${type}`;
+    alert.innerHTML = `
+        <span>${message}</span>
+        <i class='bx bx-x close-alert'></i>
+    `;
+    document.body.appendChild(alert);
+    
+    setTimeout(() => {
+        alert.classList.add('show');
+    }, 10);
+    
+    alert.querySelector('.close-alert').addEventListener('click', () => {
+        alert.remove();
+    });
+    
+    setTimeout(() => {
+        alert.remove();
+    }, 5000);
+}
                             
                         case 'appointments':
                             // Get appointments from localStorage
